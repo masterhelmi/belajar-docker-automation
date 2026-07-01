@@ -5,12 +5,13 @@ pipeline {
         stage('Clone Code') {
             steps {
                 echo 'Mengambil kode terbaru dari GitHub...'
+                checkout scm
             }
         }
         stage('Build Docker Image') {
             steps {
                 echo 'Mulai memasak image Docker...'
-                // Nanti kita masukkan perintah docker build di sini
+                sh 'docker build -t web-automasi:latest .'
             }
         }
     }
